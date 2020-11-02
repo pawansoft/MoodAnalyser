@@ -2,21 +2,18 @@ package com.MoodAnalyser;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MoodAnalyserTest {
 
     @Test
-    public void testMood_WhenStringContainSad_ShouldReturnSad() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Sad Mood");
-        String isMoodSad = moodAnalyser.analyseMood();
-        Assert.assertEquals("SAD" , isMoodSad);
-    }
-
-    @Test
     public void testMood_WhenStringContainHappy_ShouldReturnHappy() {
         MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-        String isMoodHappy = moodAnalyser.analyseMood();
-        Assert.assertEquals("HAPPY" , isMoodHappy);
+        try {
+                moodAnalyser.analyseMood();
+        }
+        catch ( AnalyseMoodNullExceptions e) {
+            Assert.assertEquals(AnalyseMoodNullExceptions.ExceptionType.ENTERD_NULL, e.type);
+        }
     }
 }
-
