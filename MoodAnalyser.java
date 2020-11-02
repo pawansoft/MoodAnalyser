@@ -1,5 +1,7 @@
 package com.MoodAnalyser;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 public class MoodAnalyser {
 
     private String moodMessage;
@@ -12,12 +14,18 @@ public class MoodAnalyser {
     }
 
     public String analyseMood() {
-        if(moodMessage.contains("Sad")) {
-            return "SAD";
+        try {
+            if(moodMessage.contains("Sad")) {
+                return "SAD";
+            }
+            else {
+                return "HAPPY";
+            }
         }
-        else {
+        catch (NullPointerException e) {
             return "HAPPY";
         }
+
     }
 }
 
